@@ -1,3 +1,4 @@
+import Logo from "../../assets/images/logo.png";
 import { useEffect, useState } from "react";
 import "./Navbar.css";
 
@@ -26,7 +27,7 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
       {/* Logo */}
       <div className="navbar-logo">
-        <img src="/src/assets/images/logo.png" alt="SCC" className="logo-img" />
+        <img src={Logo} alt="SCC" className="logo-img" />
         <span>Samrat Coaching Classes</span>
       </div>
 

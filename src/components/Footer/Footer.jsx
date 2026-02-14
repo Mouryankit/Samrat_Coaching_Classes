@@ -1,6 +1,7 @@
 import React from "react";
 import "./Footer.css";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import Logo from "../../assets/images/logo.png"; 
 
 const Footer = () => {
   return (
@@ -9,7 +10,7 @@ const Footer = () => {
         {/* Logo & Name */}
         <div className="footer-logo">
           <img
-            src="/src/assets/images/logo.png"
+            src={Logo}
             alt="SCC"
             className="footer-logo-img"
           />
@@ -33,7 +34,7 @@ const Footer = () => {
         <div className="footer-contact">
           <h4>Contact Us</h4>
           <p>📍 123 Main Street, City, State</p>
-          <p>📞 +91 9876543210</p>
+          <p>📞 +91 XXXXXXXXXX</p>
           <p>✉ info@samratcoaching.com</p>
         </div>
 

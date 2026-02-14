@@ -1,6 +1,6 @@
 import React from "react";
 import "./About.css";
-import aboutImg from "/src/assets/images/person.png"; // Add your image
+import AboutImg from "../../assets/images/person.png"; // Add your image
 
 const About = () => {
   return (
@@ -8,7 +8,7 @@ const About = () => {
       <div className="about-container">
         {/* Left image */}
         <div className="about-image">
-          <img src={aboutImg} alt="About Us" />
+          <img src={AboutImg} alt="About Us" />
         </div>
 
         {/* Right text */}

@@ -1,3 +1,4 @@
+import FacultyImage from "../../assets/images/person.png"; 
 
 import "./Faculty.css";
 
@@ -6,25 +7,25 @@ const facultyData = [
     name: "Mr. Rajesh Sharma",
     subject: "Mathematics",
     experience: "10 Years",
-    img: "/src/assets/images/person.png",
+    img: FacultyImage,
   },
   {
     name: "Ms. Anjali Verma",
     subject: "Physics",
     experience: "8 Years",
-    img: "/src/assets/images/person.png",
+    img: FacultyImage,
   },
   {
     name: "Mr. Amit Singh",
     subject: "Chemistry",
     experience: "9 Years",
-    img: "/src/assets/images/person.png",
+    img: FacultyImage,
   },
   {
     name: "Ms. Priya Kapoor",
     subject: "Biology",
     experience: "7 Years",
-    img: "/src/assets/images/person.png",
+    img: FacultyImage,
   },
 ];
 

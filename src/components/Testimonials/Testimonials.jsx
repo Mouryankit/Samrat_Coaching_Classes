@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Testimonials.css";
 import { FaStar } from "react-icons/fa";
+import studentImage from "../../assets/images/person.png"; 
 
 const testimonialsData = [
   {
@@ -8,7 +9,7 @@ const testimonialsData = [
     course: "JEE Preparation",
     review:
       "Samrat Coaching Classes helped me achieve my dream rank! The faculty and study material are top-notch.",
-    img: "/src/assets/images/logo.png",
+    img: studentImage,
     rating: 4,
   },
   {
@@ -16,7 +17,7 @@ const testimonialsData = [
     course: "Class 12 Science",
     review:
       "The teachers are very supportive and the weekly tests helped me improve consistently.",
-    img: "/src/assets/images/logo.png",
+    img: studentImage,
     rating: 5,
   },
   {
@@ -24,7 +25,7 @@ const testimonialsData = [
     course: "NEET Preparation",
     review:
       "Best coaching for NEET aspirants. Concept clarity and doubt sessions are amazing.",
-    img: "/src/assets/images/logo.png",
+    img: studentImage,
     rating: 5,
   },
 ];

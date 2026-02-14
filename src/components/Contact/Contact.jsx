@@ -97,7 +97,7 @@ const Contact = () => {
         <div className="contact-info">
           <h3>Our Contact Info</h3>
           <p>📍 123 Main Street, City, State</p>
-          <p>📞 +91 9876543210</p>
+          <p>📞 +91 XXXXXXXXXX</p>
           <p>✉ info@samratcoaching.com</p>
           <p>🌐 www.samratcoaching.com</p>
         </div>
