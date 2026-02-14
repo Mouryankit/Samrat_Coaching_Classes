@@ -1,0 +1,275 @@
+body {
+  margin: 0;
+  background: radial-gradient(circle at center, #0a0a1f 0%, #000 70%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Georgia', serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Floating embers background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #ffaa00, transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255,140,0,0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, #ffd700, transparent);
+  background-repeat: repeat;
+  background-size: 100px 100px;
+  animation: emberFloat 20s linear infinite;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+@keyframes emberFloat {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-100vh) rotate(360deg); }
+}
+
+.book-container {
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.book {
+  position: relative;
+  width: 650px;
+  height: 450px;
+  perspective: 3000px;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 30px 80px rgba(139, 69, 19, 0.6));
+}
+
+/* Pages: Leather-bound grimoire style */
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: all 1.5s cubic-bezier(0.23, 0.12, 0.34, 1.1); /* Bouncy magical ease */
+  cursor: grab;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 
+    0 25px 60px rgba(0,0,0,0.7),
+    inset 0 0 20px rgba(255,215,0,0.1); /* Inner gold glow */
+  background: linear-gradient(145deg, 
+    #3c2f2f, /* Leather texture */
+    #2c1f1f 50%,
+    #4a362e 100%);
+  border: 4px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Glowing rune border */
+.page::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 22px;
+  padding: 4px;
+  background: linear-gradient(45deg, #ffd700, #ff4500, #ffd700);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  opacity: 0.8;
+  animation: runePulse 3s ease-in-out infinite alternate;
+  box-shadow: 0 0 30px rgba(255,215,0,0.6);
+}
+
+@keyframes runePulse {
+  0% { opacity: 0.6; filter: hue-rotate(0deg) brightness(1); }
+  100% { opacity: 1; filter: hue-rotate(60deg) brightness(1.3); }
+}
+
+.page:hover {
+  transform: scale(1.02) !important; /* Slight lift */
+  box-shadow: 
+    0 35px 100px rgba(255,140,0,0.8),
+    inset 0 0 40px rgba(255,215,0,0.3);
+}
+
+.page img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  backface-visibility: hidden;
+  border-radius: 14px;
+  filter: sepia(0.1) contrast(1.1) brightness(1.05); /* Parchment tint */
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.3); /* Depth */
+}
+
+/* Back side of page: Mystical gradient + runes */
+.page.flipped img {
+  filter: sepia(0.3) hue-rotate(20deg) brightness(0.9);
+}
+
+.page .page-content {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255,215,0,0.1) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(75,0,130,0.2), rgba(138,43,226,0.1));
+  opacity: 0;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #ffd700;
+  text-shadow: 0 0 10px #ffd700;
+  transition: opacity 0.5s;
+}
+
+.page.flipped .page-content {
+  opacity: 1;
+}
+
+.page-content::after {
+  content: '✦ Ancient Rune ✦';
+  font-family: serif;
+  animation: runeGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes runeGlow {
+  0% { text-shadow: 0 0 10px #ffd700; }
+  100% { text-shadow: 0 0 30px #ff4500, 0 0 40px #ffd700; }
+}
+
+/* Enhanced curl shadow & thickness */
+.page-shadow {
+  position: absolute;
+  top: 8%;
+  right: -2px;
+  width: 25%;
+  height: 84%;
+  background: 
+    radial-gradient(ellipse at left, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 70%),
+    linear-gradient(45deg, transparent 30%, rgba(139,69,19,0.6) 100%);
+  border-radius: 100% 0 0 100% / 50% 0 0 50%;
+  opacity: 0;
+  transform: skewY(-10deg);
+  transition: all 0.8s ease;
+  filter: blur(1px);
+}
+
+.page.flipped .page-shadow {
+  opacity: 1;
+  right: 0;
+  animation: curlShadow 1.5s ease-out;
+}
+
+@keyframes curlShadow {
+  0% { transform: skewY(-45deg) scaleX(0.5); opacity: 0; }
+  50% { transform: skewY(-15deg) scaleX(0.8); }
+  100% { transform: skewY(-10deg) scaleX(1); }
+}
+
+/* Flipped state with extra depth */
+.page.flipped {
+  transform: rotateY(-180deg);
+}
+
+/* Navigation Arrows: Enchanted orbs */
+.nav-arrows {
+  display: flex;
+  justify-content: space-between;
+  width: 650px;
+  margin: 0 auto 15px;
+}
+
+.nav-btn {
+  background: radial-gradient(circle, #ff4500 0%, #8b0000 70%);
+  border: 2px solid #ffd700;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  font-size: 30px;
+  color: #ffd700;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 
+    0 10px 40px rgba(255,69,0,0.5),
+    inset 0 2px 20px rgba(255,215,0,0.3);
+}
+
+.nav-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(transparent, rgba(255,255,255,0.3), transparent);
+  animation: spin 2s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.nav-btn:hover::before {
+  opacity: 1;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+.nav-btn:hover:not(:disabled) {
+  transform: scale(1.15) translateY(-5px) rotate(5deg);
+  box-shadow: 0 20px 60px rgba(255,140,0,0.8);
+}
+
+.nav-btn:disabled {
+  background: #333;
+  border-color: #666;
+  cursor: not-allowed;
+}
+
+/* Page Counter: Golden scroll */
+.page-counter {
+  background: linear-gradient(145deg, #2c1f1f, #4a362e);
+  color: #ffd700;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 30px;
+  border-radius: 50px;
+  margin-bottom: 15px;
+  border: 2px solid #ffd700;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 1px 10px rgba(255,255,255,0.1);
+  text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+}
+
+/* Hint */
+.hint {
+  color: #dda0dd;
+  margin-top: 20px;
+  font-size: 15px;
+  font-style: italic;
+  text-shadow: 0 0 10px rgba(221,160,221,0.5);
+  animation: fadeGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes fadeGlow {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; text-shadow: 0 0 20px rgba(221,160,221,0.8); }
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .book, .nav-arrows { width: 90vw; max-width: 500px; }
+  .book { height: 60vh; }
+}
+
+

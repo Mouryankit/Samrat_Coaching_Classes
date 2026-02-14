@@ -1,0 +1,212 @@
+/* .page-slider {
+  perspective: 1200px;
+  width: 100%;
+  max-width: 420px;
+  margin: auto;
+}
+
+.page {
+  width: 100%;
+  height: 280px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  transform-origin: left center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transition: transform 0.6s ease;
+}
+
+.page img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+Page turn animation
+.page.flip {
+  transform: rotateY(-160deg);
+} */
+
+/* 
+.book-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.book {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  perspective: 1500px;
+}
+
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+LEFT PAGE (hidden)
+.left-page {
+  background: #f5f5f5;
+  display: none; 
+} */
+
+/* RIGHT PAGE 
+.right-page {
+  /* background: white;
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease-in-out;
+  backface-visibility: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.right-page img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* FLIP ANIMATION */
+/* .right-page.flip {
+  transform: rotateY(-180deg);
+} */
+
+/* BUTTON */
+/* .next-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+} */
+
+
+body {
+  background: linear-gradient(135deg, #1e1e2f, #2c2c54);
+  font-family: Arial, sans-serif;
+}
+
+.book-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+}
+
+/* BOOK CONTAINER */
+.book {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  perspective: 2000px;
+  display: flex;
+}
+
+/* COMMON PAGE STYLE */
+.page {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* LEFT PAGE */
+.left-page {
+  background: #f4f1ea;
+  box-shadow: inset -8px 0 15px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-content {
+  text-align: center;
+  color: #333;
+}
+
+.page-content h2 {
+  margin-bottom: 10px;
+}
+
+/* RIGHT PAGE */
+.right-page {
+  position: absolute;
+  right: 0;
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+  backface-visibility: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+}
+
+/* IMAGE */
+.right-page img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* SHADOW OVERLAY */
+.page-shadow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.1),
+    transparent
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* FLIP EFFECT */
+.right-page.flip {
+  transform: rotateY(-180deg);
+}
+
+.right-page.flip .page-shadow {
+  opacity: 1;
+}
+
+/* BUTTON */
+.btn {
+  margin-top: 40px;
+  padding: 12px 28px;
+  border: none;
+  background: white;
+  color: black;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background: black;
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .book {
+    width: 90%;
+    height: 300px;
+  }
+}

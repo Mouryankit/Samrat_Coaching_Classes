@@ -1,0 +1,83 @@
+.faculty-section {
+  padding: 80px 10%;
+  background-color: #f8fafc;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: #1e3a8a;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: #475569;
+  margin-bottom: 50px;
+}
+
+/* Faculty cards container */
+.faculty-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+/* Faculty card */
+.faculty-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  text-align: center;
+}
+
+/* Hover animation */
+.faculty-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Faculty image */
+.faculty-image img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  transition: transform 0.4s ease;
+}
+
+/* Image hover effect */
+.faculty-card:hover .faculty-image img {
+  transform: scale(1.05);
+}
+
+/* Name */
+.faculty-card h3 {
+  font-size: 1.2rem;
+  color: #0f172a;
+  margin-bottom: 5px;
+}
+
+/* Subject */
+.faculty-card p {
+  color: #2563eb;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+/* Experience */
+.faculty-card span {
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+}

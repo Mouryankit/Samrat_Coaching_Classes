@@ -1,0 +1,112 @@
+.testimonials-section {
+  padding: 80px 10%;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: #1e3a8a;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: #475569;
+  margin-bottom: 50px;
+}
+
+/* Slider container */
+.testimonial-slider {
+  position: relative;
+  overflow: hidden;
+  height: 320px;
+}
+
+/* Card */
+.testimonial-card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 400px;
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  background: #f0f9ff;
+  padding: 25px 20px;
+  border-radius: 16px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Active card */
+.testimonial-card.active {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  z-index: 10;
+}
+
+/* Inactive card */
+.testimonial-card.inactive {
+  opacity: 0;
+  transform: translateX(-50%) scale(0.95);
+  z-index: 0;
+}
+
+/* Student image */
+.testimonial-image img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 3px solid #2563eb;
+}
+
+/* Review */
+.testimonial-review {
+  font-style: italic;
+  color: #334155;
+  margin-bottom: 15px;
+}
+
+/* Name */
+.testimonial-name {
+  font-size: 1.1rem;
+  color: #0f172a;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+/* Course */
+.testimonial-course {
+  font-size: 0.9rem;
+  color: #2563eb;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Rating */
+.testimonial-rating {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .testimonial-slider {
+    height: auto;
+  }
+
+  .testimonial-card {
+    position: relative;
+    margin: auto;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+}
