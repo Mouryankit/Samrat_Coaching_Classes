@@ -1,16 +1,78 @@
-# React + Vite
+# Samrat Coaching Classes – Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
 
-Currently, two official plugins are available:
+**Samrat Coaching Classes** is a portfolio-style website developed for a coaching institute to showcase its courses, information about the institute, and contact details.
+The website provides students and parents with an easy way to learn about the coaching classes, available programs, and how to connect with the institute.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project is built using **React** and focuses on creating a modern, responsive, and user-friendly interface.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+* Responsive and modern user interface
+* Home page introducing the coaching institute
+* About section describing the institute
+* Faculty/Teacher information section
+* Contact section for inquiries
+* Smooth navigation between pages
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Tech Stack
+
+### Frontend
+
+* React
+* HTML
+* CSS
+
+---
+
+## Website Sections
+
+### Home
+
+Provides an overview of **Samrat Coaching Classes**, highlighting its mission and key information.
+
+### About
+
+Contains details about the institute, its goals, and its teaching approach.
+
+### Courses
+
+Displays the different coaching programs offered by the institute.
+
+### Faculty
+
+Introduces teachers or instructors associated with the coaching classes.
+
+### Contact
+
+Provides contact details for students who want to join or inquire about the coaching classes.
+
+---
+
+## Learning Objectives
+
+This project helped in practicing:
+
+* Building a website using **React**
+* Creating reusable components
+* Designing responsive layouts
+* Structuring a frontend project
+* Developing a portfolio-style website for a business
+
+---
+
+## Author
+
+**Ankit Mourya**
+B.Tech CSE Student
+
+---
+
+## License
+
+This project is created for **learning and demonstration purposes**.
