@@ -1,0 +1,97 @@
+/* =============================================
+   GLOBAL DESIGN TOKENS — Samrat Coaching Classes
+   ============================================= */
+
+:root {
+  /* ── Brand Colors (Coaching Academy Colors) ── */
+  --color-primary: #0f294a;
+  /* Deep Navy Blue — authority, credibility, and trust */
+  --color-primary-mid: #1e3a8a;
+  /* Intermediate Navy — secondary structural elements */
+  --color-primary-light: #2563eb;
+  /* Royal Blue — primary brand accent & interaction */
+  --color-primary-pale: #eff6ff;
+  /* Light Sky Blue tint — background offsets & badge highlights */
+
+  /* ── Accent / CTA (Gold and Orange Highlights) ── */
+  --color-accent: #2563eb;
+  /* Royal Blue — primary interactive calls to action */
+  --color-accent-hover: #1d4ed8;
+  /* Darker Royal Blue — button hovers */
+  --color-accent-pale: #dbeafe;
+  /* Soft Blue tint — light tags */
+  --color-accent-gold: #eab308;
+  /* Subtle Academic Gold — ratings, counters, toppers, awards */
+  --color-accent-orange: #f97316;
+  /* Accent Orange — high urgency alerts, badge updates */
+  --color-cta: var(--color-accent);
+  --color-cta-hover: var(--color-accent-hover);
+
+  /* ── Backgrounds (Clean Academic Layered Design) ── */
+  --bg-white: #ffffff;
+  /* Pure White — card surfaces & section panels */
+  --bg-app: #f8fafc;
+  /* Slate-50 — main clean application background */
+  --bg-light: #ffffff;
+  /* Pure White — surface container blocks */
+  --bg-sky: #f1f5f9;
+  /* Slate-100 — alternating sections */
+  --bg-surface: #ffffff;
+  /* Pure White — cards layout base */
+  --bg-dark-indigo: #0f294a;
+  /* Navy Blue — dark headers/sections fallback */
+  --bg-hero-start: #0a192f;
+  /* Deep Dark Navy — hero background start */
+  --bg-hero-end: #0f294a;
+  /* Navy Blue — hero background end */
+
+  /* ── Text Colors (Optimized for Academic Legibility) ── */
+  --text-dark: #0f294a;
+  /* Deep Navy — strong headers & titles */
+  --text-body: #334155;
+  /* Slate-700 — high readability content text */
+  --text-muted: #64748b;
+  /* Slate-500 — clear, readable captions & subtitles */
+  --text-light: #94a3b8;
+  /* Slate-400 — labels on dark backgrounds */
+  --text-white: #ffffff;
+
+  /* ── Navbar Specific ── */
+  --navbar-bg: #0f294a;
+  /* Solid Navy header */
+  --navbar-bg-scrolled: rgba(15, 41, 74, 0.96);
+  /* Glassy Navy scrolling header */
+  --navbar-link-hover: #eab308;
+  /* Gold hover links */
+
+  /* ── Borders & Inputs ── */
+  --border-input: #cbd5e1;
+  --border-focus: var(--color-primary-light);
+  --shadow-focus: rgba(37, 99, 235, 0.15);
+
+  /* ── Shadows (Softer & more balanced) ── */
+  --shadow-sm: 0 1px 3px rgba(15, 41, 74, 0.05);
+  --shadow-md: 0 4px 12px rgba(15, 41, 74, 0.08);
+  --shadow-lg: 0 10px 30px rgba(15, 41, 74, 0.12);
+  --shadow-xl: 0 20px 40px rgba(15, 41, 74, 0.16);
+  --shadow-hover-md: 0 12px 24px rgba(15, 41, 74, 0.15);
+  --shadow-hover-lg: 0 20px 40px rgba(15, 41, 74, 0.22);
+  --shadow-navbar: 0 4px 20px rgba(10, 25, 47, 0.12);
+
+  /* ── Border Radius ── */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 18px;
+  --radius-2xl: 20px;
+  --radius-full: 50px;
+
+  /* ── Spacing ── */
+  --section-padding: 55px 10%;
+  --navbar-height: 72px;
+
+  /* ── Transitions ── */
+  --transition-fast: 0.3s ease;
+  --transition-med: 0.4s ease;
+  --transition-slow: 0.8s ease;
+}

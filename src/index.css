@@ -1,7 +1,7 @@
+/* index.css — App Entry Styles */
 
+/* 1. Design tokens — MUST be first so variables are available everywhere */
+@import "./styles/variables.css";
 
-*{
-  margin: 0;
-  padding: 0;
-  /* box-sizing: border-box; */
-}
+/* 2. Globals: reset, base, shared utilities, buttons, animations */
+@import "./styles/globals.css";

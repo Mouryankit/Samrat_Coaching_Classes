@@ -1,0 +1,261 @@
+/* =============================================
+   GLOBALS — Samrat Coaching Classes
+   Shared base styles and reusable utilities
+   ============================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ── Base ── */
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--text-body);
+  background: var(--bg-app);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* ── Unified Page Background Wrapper ── */
+.main-content {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    var(--bg-app) 0%,
+    var(--bg-light) 25%,
+    var(--bg-sky) 50%,
+    var(--bg-light) 75%,
+    var(--bg-app) 100%
+  );
+  /* Continuous, extremely subtle dotted grid pattern */
+  background-image: radial-gradient(circle, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+  background-size: 28px 28px;
+  overflow: hidden; /* Prevent floating aurora blobs from creating horizontal scrollbars */
+  z-index: 1;
+}
+
+/* ── Unified Premium Aurora Glow Blobs ── */
+.main-content::before,
+.main-content::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.12; /* Low opacity to preserve text contrast */
+}
+
+/* Aurora Amber/Rose (Top Left - floats around About/Course) */
+.main-content::before {
+  top: 10%;
+  left: -15vw;
+  width: 50vw;
+  height: 50vw;
+  min-width: 450px;
+  min-height: 450px;
+  background: radial-gradient(circle, var(--color-accent) 0%, rgba(245, 158, 11, 0.3) 50%, transparent 100%);
+  filter: blur(130px);
+  animation: auroraFloatLeft 20s ease-in-out infinite alternate;
+}
+
+/* Aurora Blue/Slate (Bottom Right - floats around Testimonials/Contact) */
+.main-content::after {
+  bottom: 15%;
+  right: -15vw;
+  width: 55vw;
+  height: 55vw;
+  min-width: 500px;
+  min-height: 500px;
+  background: radial-gradient(circle, var(--color-primary-light) 0%, rgba(37, 99, 235, 0.15) 60%, transparent 100%);
+  filter: blur(150px);
+  animation: auroraFloatRight 25s ease-in-out infinite alternate;
+}
+
+/* ── Section Transition Shadow Overlays ── */
+.about-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.12) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.contact-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(0deg, rgba(15, 23, 42, 0.08) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Custom Keyframes for Smooth Floating Effects ── */
+@keyframes auroraFloatLeft {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate(4vw, 5vh) scale(1.08) rotate(45deg);
+  }
+  100% {
+    transform: translate(-2vw, 8vh) scale(0.95) rotate(90deg);
+  }
+}
+
+@keyframes auroraFloatRight {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate(-3vw, -6vh) scale(0.92) rotate(-60deg);
+  }
+  100% {
+    transform: translate(2vw, 4vh) scale(1.05) rotate(30deg);
+  }
+}
+
+/* ── Shared Section Headings ── */
+.section-title {
+  font-size: 2.5rem;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 50px;
+}
+
+/* ── Shared Section Styles ── */
+.courses-section {
+  padding: var(--section-padding);
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.results-section {
+  padding: var(--section-padding);
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.about-section {
+  padding: var(--section-padding);
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--text-white);
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background var(--transition-fast);
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-hover);
+}
+
+.btn-secondary {
+  border: 2px solid var(--text-white);
+  color: var(--text-white);
+  padding: 0.6rem 1.3rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background-color: var(--text-white);
+  color: var(--color-primary);
+}
+
+/* Global enroll pill button — used in Navbar & Hero */
+.btn-enroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-accent);
+  color: var(--text-white);
+  padding: 0.55rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+  white-space: nowrap;
+}
+
+.btn-enroll:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+}
+
+.btn-enroll:active {
+  transform: translateY(0);
+}
+
+/* ── Shared Animation Keyframes ── */
+@keyframes fadeSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ── Responsive section heading ── */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+}

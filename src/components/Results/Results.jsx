@@ -1,63 +1,100 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./Results.css";
+import ResultsStats from "./ResultsStats";
+import ResultCard from "./ResultCard";
+import ResultsModal from "./ResultsModal";
+import { statsData, rankersData } from "../../data/resultsData";
 
-const resultsData = [
-  { label: "Students Selected", value: 5000, suffix: "+" },
-  { label: "Years Experience", value: 10, suffix: "+" },
-  { label: "Success Rate", value: 95, suffix: "%" },
-  { label: "Courses Completed", value: 50, suffix: "+" },
-];
-
-const ResultCard = ({ label, value, suffix }) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    let start = 0;
-    const end = value;
-    const duration = 1500; // 1.5 sec
-    const increment = end / (duration / 30);
-
-    const counter = setInterval(() => {
-      start += increment;
-      if (start >= end) {
-        start = end;
-        clearInterval(counter);
-      }
-      setCount(Math.floor(start));
-    }, 30);
-
-    return () => clearInterval(counter);
-  }, [value]);
-
-  return (
-    <div className="result-card">
-      <h3>
-        {count}
-        {suffix}
-      </h3>
-      <p>{label}</p>
-    </div>
-  );
-};
 
 const Results = () => {
-  return (
-    <section className="results-section" id="results">
-      <h2 className="section-title">Our Achievements</h2>
-      <p className="section-subtitle">
-        Numbers that speak for our success
-      </p>
+  const [isVisible, setIsVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const sectionRef = useRef(null);
 
-      <div className="results-container">
-        {resultsData.map((item, index) => (
-          <ResultCard
-            key={index}
-            label={item.label}
-            value={item.value}
-            suffix={item.suffix}
-          />
-        ))}
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Triple the data array for seamless looping marquee
+  const marqueeData = [...rankersData, ...rankersData, ...rankersData];
+
+  return (
+    <section className="results-section" id="results" ref={sectionRef}>
+      <div className="results-bg-glow" />
+      
+      <div className="results-header">
+        <span className="results-eyebrow">Academic Achievements</span>
+        <h2 className="section-title">Our Wall of Fame</h2>
+        <p className="section-subtitle">
+          Celebrating the dedication, hard work, and outstanding board results of our students
+        </p>
       </div>
+
+      {/* Trust Badges */}
+      <div className="results-trust-badges">
+        <span className="trust-badge"><span className="badge-bullet">🌟</span> Academic Excellence</span>
+        <span className="trust-badge"><span className="badge-bullet">❤️</span> Trusted by Parents</span>
+        <span className="trust-badge"><span className="badge-bullet">📚</span> Board Exam Specialists</span>
+        <span className="trust-badge"><span className="badge-bullet">🏅</span> Scholarship Achievers</span>
+        <span className="trust-badge"><span className="badge-bullet">🏫</span> Quality Education Since 2014</span>
+      </div>
+
+      {/* Stats Counter Row */}
+      <ResultsStats statsData={statsData} visible={isVisible} />
+
+      {/* Conditionally Render: Scrolling Carousel or Static Grid */}
+      {rankersData.length > 4 ? (
+        <div className="results-marquee-container">
+          <div className="results-marquee-track">
+            {marqueeData.map((ranker, index) => (
+              <ResultCard 
+                key={`marquee-${ranker.id}-${index}`} 
+                ranker={ranker} 
+                index={index} 
+                className="marquee-card" 
+              />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="rankers-grid">
+          {rankersData.map((ranker, index) => (
+            <ResultCard 
+              key={`grid-${ranker.id}`} 
+              ranker={ranker} 
+              index={index} 
+            />
+          ))}
+        </div>
+      )}
+
+      {/* CTA Section */}
+      <div className="results-cta">
+        <button className="btn-enroll" onClick={() => setIsModalOpen(true)}>
+          View All {rankersData.length} Toppers
+        </button>
+      </div>
+
+      {/* View All Modal */}
+      {isModalOpen && (
+        <ResultsModal 
+          onClose={() => setIsModalOpen(false)} 
+          rankersData={rankersData} 
+        />
+      )}
     </section>
   );
 };

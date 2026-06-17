@@ -1,63 +1,40 @@
-
+import React from "react";
 import "./Course.css";
-import { FaBookOpen, FaClock, FaChalkboardTeacher } from "react-icons/fa";
+import CourseCard from "./CourseCard";
+import { coursesData } from "../../data/courseData";
 
-const coursesData = [
-  {
-    title: "Class 9 & 10 Foundation",
-    duration: "1 Year",
-    mode: "Offline",
-    highlights: ["Strong Basics", "Weekly Tests", "Doubt Sessions"],
-  },
-  {
-    title: "Class 11 & 12 Science",
-    duration: "2 Years",
-    mode: "Offline",
-    highlights: ["Concept Clarity", "Board + Competitive Focus", "Expert Faculty"],
-  },
-  {
-    title: "JEE / NEET Preparation",
-    duration: "2 Years",
-    mode: "Offline",
-    highlights: ["Advanced Problems", "Mock Tests", "Result Oriented"],
-  },
-];
 
 const Courses = () => {
+  // Triple the data to make sure it covers the screen width on 4K/high-res desktop displays
+  const marqueeData = [...coursesData, ...coursesData, ...coursesData];
+
   return (
     <section className="courses-section" id="courses">
-      <h2 className="section-title">Our Courses</h2>
-      <p className="section-subtitle">
-        Structured programs designed for academic excellence
-      </p>
+      {/* ── Section header ── */}
+      <div className="courses-header">
+        <span className="courses-eyebrow">Academic Programs</span>
+        <h2 className="section-title">Class 1st to 12th Tuition</h2>
+        <p className="section-subtitle">
+          Structured conceptual coaching designed for school excellence and board examinations
+        </p>
+      </div>
 
-      <div className="courses-container">
-        {coursesData.map((course, index) => (
-          <div className="course-card" key={index}>
-            <div className="course-icon">
-              <FaBookOpen />
-            </div>
+      {/* ── Marquee Carousel Container ── */}
+      <div className="courses-marquee-container">
+        <div className="course-marquee-track">
+          {marqueeData.map((course, idx) => (
+            <CourseCard key={`${course.id}-${idx}`} course={course} />
+          ))}
+        </div>
+      </div>
 
-            <h3>{course.title}</h3>
-
-            <div className="course-meta">
-              <span>
-                <FaClock /> {course.duration}
-              </span>
-              <span>
-                <FaChalkboardTeacher /> {course.mode}
-              </span>
-            </div>
-
-            <ul>
-              {course.highlights.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
-
-            <button className="course-btn">Enroll Now</button>
-          </div>
-        ))}
+      {/* ── Bottom CTA banner ── */}
+      <div className="courses-cta-banner">
+        <div>
+          <strong>Not sure about the right batch or timing?</strong>
+          <p>Talk to our coordinators to learn more about schedules, demo classes, and curriculum.</p>
+        </div>
+        <a href="#contact" className="btn-enroll">📞 Free Counselling</a>
       </div>
     </section>
   );

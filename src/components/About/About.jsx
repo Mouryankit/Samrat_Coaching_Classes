@@ -1,38 +1,77 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./About.css";
-import AboutImg from "../../assets/images/person.png"; // Add your image
+import AboutThumbnail from "../../assets/thumbnail.png";
+import AboutVideoPlayer from "./AboutVideoPlayer";
+import { highlightsData, youtubeVideoId } from "../../data/aboutData";
+
+
 
 const About = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.15 }
+    );
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="about-section" id="about">
+    <section 
+      ref={sectionRef} 
+      className={`about-section ${isVisible ? "animate-in" : ""}`} 
+      id="about"
+    >
       <div className="about-container">
-        {/* Left image */}
-        <div className="about-image">
-          <img src={AboutImg} alt="About Us" />
-        </div>
+        
+        {/* Left: Interactive Video Block */}
+        <AboutVideoPlayer videoId={youtubeVideoId} thumbnailSrc={AboutThumbnail} />
 
-        {/* Right text */}
-        <div className="about-content">
-          <h2 className="section-title">About Samrat Coaching Classes</h2>
-          <p className="section-subtitle">
-            Empowering students with quality education and personalized guidance
+        {/* Right: Storytelling Content */}
+        <div className="about-content-side">
+          <div className="about-header-meta">
+            <h2 className="section-title">The Samrat Legacy</h2>
+          </div>
+          
+          <p className="about-lead">
+            At Samrat Coaching Classes, we guide students toward academic success and character development. With expert mentorship and proven methods, we make learning engaging, result-oriented, and accessible.
           </p>
 
-          <p className="about-text">
-            At Samrat Coaching Classes, we believe every student has the potential
-            to excel. Our mission is to provide comprehensive learning programs
-            with expert faculty, innovative teaching methods, and continuous
-            support. We focus on building confidence, clarity of concepts, and
-            academic excellence, ensuring our students achieve their dreams.
-          </p>
+          <div className="about-highlights-grid">
+            {highlightsData.map((highlight, index) => {
+              const Icon = highlight.icon;
+              return (
+                <div className="highlight-item" key={index}>
+                  <div className="highlight-icon-wrap"><Icon /></div>
+                  <div className="highlight-text">
+                    <h4>{highlight.title}</h4>
+                    <p>{highlight.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
 
-          <ul className="about-points">
-            <li>Experienced & Dedicated Faculty</li>
-            <li>Small Batch Sizes for Personal Attention</li>
-            <li>Regular Tests & Doubt Sessions</li>
-            <li>Result-Oriented Curriculum</li>
-          </ul>
+
+          <div className="about-action">
+            <a href="#contact" className="btn-enroll">Explore Programs</a>
+          </div>
         </div>
+
       </div>
     </section>
   );

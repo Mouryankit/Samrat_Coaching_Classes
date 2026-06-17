@@ -1,68 +1,251 @@
+/* =============================================
+   Features.css — Modern Bento Features Section
+   ============================================= */
+
 .features-section {
-  padding: 80px 10%;
-  background-color: #ffffff;
+  padding: var(--section-padding);
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.features-header {
   text-align: center;
+  margin-bottom: 3.5rem;
 }
 
-.section-title {
-  font-size: 2.5rem;
-  color: #1e3a8a;
-  margin-bottom: 10px;
+.features-eyebrow {
+  display: inline-block;
+  background: var(--color-primary-pale);
+  color: var(--color-primary-light);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: var(--radius-full);
+  margin-bottom: 12px;
 }
 
-.section-subtitle {
-  font-size: 1.1rem;
-  color: #475569;
-  margin-bottom: 50px;
-}
-
-/* Grid */
-.features-container {
+/* ── Bento Grid (3 Columns) ── */
+.features-bento-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 170px;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Card */
-.feature-card {
-  background: #f8fafc;
-  padding: 35px 25px;
-  border-radius: 18px;
-  transition: all 0.4s ease;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+.feature-bento-item {
+  position: relative;
+  background: var(--bg-white);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 41, 74, 0.05);
+  box-shadow: 0 4px 15px rgba(15, 41, 74, 0.02);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
 }
 
-/* Hover animation */
-.feature-card:hover {
-  transform: translateY(-10px);
-  background: #eff6ff;
-  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
+/* Grid Spanning Math (3 Columns, 12 Total slots, zero gaps) */
+.feature-item--large {
+  grid-column: span 2;
+  grid-row: span 2;
 }
 
-/* Icon */
-.feature-icon {
-  font-size: 2.8rem;
-  color: #2563eb;
-  margin-bottom: 20px;
+.feature-item--medium {
+  grid-column: span 2;
+  grid-row: span 1;
 }
 
-/* Title */
-.feature-card h3 {
-  font-size: 1.3rem;
-  color: #0f172a;
-  margin-bottom: 10px;
+.feature-item--small {
+  grid-column: span 1;
+  grid-row: span 1;
 }
 
-/* Description */
-.feature-card p {
-  color: #475569;
-  font-size: 0.95rem;
+/* Content layout wrapper */
+.feature-bento-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  pointer-events: none; /* Let mouse move events pass through to card */
+}
+
+/* Icon style */
+.feature-bento-icon {
+  width: 46px;
+  height: 46px;
+  background: var(--color-primary-pale);
+  color: var(--color-primary-light);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+/* Text style */
+.feature-bento-text h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.feature-bento-text p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
+
+/* Large Card layout overrides */
+.feature-item--large .feature-bento-content {
+  justify-content: center;
+  height: 100%;
+  gap: 20px;
+}
+
+.feature-item--large .feature-bento-icon {
+  width: 58px;
+  height: 58px;
+  font-size: 1.75rem;
+  border-radius: 16px;
+}
+
+.feature-item--large .feature-bento-text h3 {
+  font-size: 1.35rem;
+}
+
+.feature-item--large .feature-bento-text p {
+  font-size: 0.88rem;
   line-height: 1.6;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 2rem;
+/* Medium Card layout overrides (Horizontal content mapping) */
+.feature-item--medium .feature-bento-content {
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.feature-item--medium .feature-bento-text {
+  flex: 1;
+}
+
+/* Hover Interactivity & Visuals */
+.feature-bento-item:hover {
+  transform: translateY(-5px);
+  border-color: rgba(37, 99, 235, 0.22);
+  box-shadow: 0 20px 40px rgba(15, 41, 74, 0.08);
+}
+
+.feature-bento-item:hover .feature-bento-icon {
+  background: var(--color-primary-light);
+  color: #ffffff;
+  transform: scale(1.08) rotate(-4deg);
+  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.2);
+}
+
+/* Cursor Glow Overlay */
+.feature-bento-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    250px circle at var(--mouse-x, 0) var(--mouse-y, 0),
+    rgba(37, 99, 235, 0.08),
+    transparent 80%
+  );
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.feature-bento-item:hover .feature-bento-glow {
+  opacity: 1;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
+/* Tablet (≤ 992px) */
+@media (max-width: 992px) {
+  .features-bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 160px;
+    gap: 20px;
+  }
+  
+  /* Reset large/medium for 2 columns */
+  .feature-item--large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .feature-item--medium {
+    grid-column: span 2;
+  }
+
+  .feature-item--small {
+    grid-column: span 1;
+  }
+}
+
+/* Mobile (≤ 600px) */
+@media (max-width: 600px) {
+  .features-section {
+    padding: 60px 6%;
+  }
+
+  .features-bento-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 16px;
+  }
+
+  .feature-item--large,
+  .feature-item--medium,
+  .feature-item--small {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .feature-bento-item {
+    padding: 24px;
+  }
+
+  /* Reset layout overrides for vertical alignment */
+  .feature-item--large .feature-bento-content,
+  .feature-item--medium .feature-bento-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .feature-item--large .feature-bento-icon,
+  .feature-item--medium .feature-bento-icon {
+    width: 46px;
+    height: 46px;
+    font-size: 1.35rem;
+    border-radius: 12px;
+  }
+
+  .feature-item--large .feature-bento-text h3 {
+    font-size: 1.1rem;
+  }
+
+  .feature-item--large .feature-bento-text p {
+    font-size: 0.8rem;
   }
 }

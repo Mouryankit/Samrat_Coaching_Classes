@@ -1,66 +1,52 @@
 import React from "react";
 import "./Features.css";
-import {
-  FaUserGraduate,
-  FaChalkboardTeacher,
-  FaClipboardCheck,
-  FaUsers,
-  FaBook,
-  FaQuestionCircle,
-} from "react-icons/fa";
+import { featuresData } from "../../data/featuresData";
 
-const featuresData = [
-  {
-    icon: <FaChalkboardTeacher />,
-    title: "Experienced Faculty",
-    desc: "Highly qualified teachers with years of teaching experience.",
-  },
-  {
-    icon: <FaUserGraduate />,
-    title: "Result-Oriented Approach",
-    desc: "Focused preparation for board exams and competitive success.",
-  },
-  {
-    icon: <FaUsers />,
-    title: "Small Batch Size",
-    desc: "Personal attention to every student for better learning.",
-  },
-  {
-    icon: <FaClipboardCheck />,
-    title: "Regular Tests",
-    desc: "Weekly tests and performance analysis for continuous improvement.",
-  },
-  {
-    icon: <FaBook />,
-    title: "Quality Study Material",
-    desc: "Well-structured notes and exam-focused study resources.",
-  },
-  {
-    icon: <FaQuestionCircle />,
-    title: "Doubt Solving Sessions",
-    desc: "Dedicated doubt-clearing sessions to strengthen concepts.",
-  },
-];
 
 const Features = () => {
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
+    e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
+  };
+
   return (
     <section className="features-section" id="features">
-      <h2 className="section-title">Why Choose Us</h2>
-      <p className="section-subtitle">
-        We focus on quality education and student success
-      </p>
+      <div className="features-header">
+        <span className="features-eyebrow">Our Strengths</span>
+        <h2 className="section-title">Why Samrat Coaching?</h2>
+        <p className="section-subtitle">
+          Discover the unique advantages that make us the preferred choice for
+          school academic coaching.
+        </p>
+      </div>
 
-      <div className="features-container">
-        {featuresData.map((feature, index) => (
-          <div className="feature-card" key={index}>
-            <div className="feature-icon">{feature.icon}</div>
-            <h3>{feature.title}</h3>
-            <p>{feature.desc}</p>
-          </div>
-        ))}
+      <div className="features-bento-grid">
+        {featuresData.map((feature) => {
+          const Icon = feature.icon;
+          return (
+            <div
+              className={`feature-bento-item ${feature.className}`}
+              key={feature.id}
+              onMouseMove={handleMouseMove}
+            >
+              <div className="feature-bento-content">
+                <div className="feature-bento-icon"><Icon /></div>
+                <div className="feature-bento-text">
+                  <h3>{feature.title}</h3>
+                  <p>{feature.desc}</p>
+                </div>
+              </div>
+              <div className="feature-bento-glow" />
+            </div>
+          );
+        })}
       </div>
     </section>
   );
 };
 
 export default Features;
+

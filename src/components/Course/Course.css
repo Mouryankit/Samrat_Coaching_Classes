@@ -1,101 +1,399 @@
+/* =======================================================
+   Course.css — Premium Horizontal Auto-Scrolling Marquee
+   ======================================================= */
+
 .courses-section {
-  padding: 80px 10%;
-  background-color: #f8fafc;
-  text-align: center;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  color: #1e3a8a;
-  margin-bottom: 10px;
-}
-
-.section-subtitle {
-  color: #475569;
-  margin-bottom: 50px;
-  font-size: 1.1rem;
-}
-
-/* Cards container */
-.courses-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-}
-
-/* Course card */
-.course-card {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 30px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  padding: var(--section-padding);
+  background: transparent;
   position: relative;
   overflow: hidden;
 }
 
-/* Hover animation */
-.course-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+/* Soft Radial Glow behind the section */
+.courses-section::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.045) 0%, rgba(37, 99, 235, 0) 70%);
+  pointer-events: none;
+  z-index: -1;
 }
 
-/* Icon */
-.course-icon {
-  font-size: 2.5rem;
-  color: #2563eb;
-  margin-bottom: 15px;
+.courses-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
 }
 
-/* Title */
-.course-card h3 {
-  font-size: 1.4rem;
-  color: #0f172a;
-  margin-bottom: 15px;
+.courses-eyebrow {
+  display: inline-block;
+  background: var(--color-primary-pale);
+  color: var(--color-primary-light);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: var(--radius-full);
+  margin-bottom: 12px;
 }
 
-/* Meta info */
-.course-meta {
+/* ── Marquee Container (Full Width with Gradient Mask Fade) ── */
+.courses-marquee-container {
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 30px 0;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  
+  /* Modern Edge Fade mask */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
+}
+
+.course-marquee-track {
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  font-size: 0.9rem;
-  color: #475569;
-  margin-bottom: 20px;
+  width: max-content;
+  gap: 32px;
+  animation: marquee 35s linear infinite;
 }
 
-/* Highlights list */
-.course-card ul {
+/* Pause marquee on container hover */
+.courses-marquee-container:hover .course-marquee-track {
+  animation-play-state: paused;
+}
+
+/* Marquee Loop (translates exactly one-third since track array is tripled) */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.33333%);
+  }
+}
+
+/* ── Premium Course Card ── */
+.course-card {
+  flex-shrink: 0;
+  width: 340px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 41, 74, 0.05);
+  box-shadow: 0 10px 30px rgba(15, 41, 74, 0.02);
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease,
+              box-shadow 0.4s ease;
+  will-change: transform;
+}
+
+/* Hover effects */
+.course-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(37, 99, 235, 0.22);
+  box-shadow: 0 25px 50px color-mix(in srgb, var(--card-color) 12%, rgba(15, 41, 74, 0.06)),
+              0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+/* Image section inside card */
+.course-card-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9.5;
+  overflow: hidden;
+  background: #0b1528;
+}
+
+.course-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.course-card:hover .course-card-image {
+  transform: scale(1.08);
+}
+
+.course-card-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 41, 74, 0.25) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Category & Tag badges */
+.course-card-category-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2;
+}
+
+.course-card-tag-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  letter-spacing: 0.2px;
+  z-index: 2;
+}
+
+/* Card content body */
+.course-card-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 14px;
+  text-align: left;
+}
+
+.course-card-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.course-card-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Highlights List (Checkmarks) */
+.course-card-highlights {
   list-style: none;
   padding: 0;
-  margin-bottom: 25px;
+  margin: 4px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.course-card ul li {
-  margin-bottom: 8px;
-  color: #334155;
+.course-card-highlights li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: var(--text-body);
+  line-height: 1.4;
 }
 
-/* Button */
-.course-btn {
-  background-color: #f97316;
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 30px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease;
+.hl-check {
+  font-size: 0.72rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
-.course-btn:hover {
-  background-color: #ea580c;
-  transform: scale(1.05);
+/* Metadata chips */
+.course-card-meta {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 2rem;
+.meta-badge {
+  background: var(--color-primary-pale);
+  color: var(--color-primary-mid);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.course-card-divider {
+  height: 1px;
+  background: rgba(15, 41, 74, 0.05);
+  margin: 4px 0;
+}
+
+/* Footer Section */
+.course-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.course-fee-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.fee-lbl {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.8px;
+}
+
+.fee-val {
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+/* Enroll CTA Button */
+.course-enroll-btn {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.course-enroll-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+/* ── Bottom CTA banner ── */
+.courses-cta-banner {
+  margin-top: 2rem;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-mid) 100%);
+  border-radius: var(--radius-2xl);
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.courses-cta-banner::before {
+  content: "?";
+  position: absolute;
+  right: 0px;
+  top: -30px;
+  font-size: 10rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.035);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.courses-cta-banner strong {
+  display: block;
+  font-size: 1.25rem;
+  color: #fff;
+  margin-bottom: 6px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.courses-cta-banner p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* =======================================================
+   RESPONSIVE
+   ======================================================= */
+
+/* Tablet (≤ 992px) */
+@media (max-width: 992px) {
+  .courses-section {
+    padding: 60px 6%;
+  }
+
+  .courses-marquee-container {
+    padding: 20px 0;
+    margin-bottom: 20px;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  }
+
+  .course-marquee-track {
+    gap: 24px;
+  }
+
+  .course-card {
+    width: 300px;
+  }
+
+  .courses-cta-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .courses-cta-banner .btn-enroll {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Mobile (≤ 600px) */
+@media (max-width: 600px) {
+  .courses-section {
+    padding: 50px 5%;
+  }
+
+  .courses-marquee-container {
+    padding: 15px 0;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+  }
+
+  .course-marquee-track {
+    gap: 16px;
+  }
+
+  .course-card {
+    width: 280px;
+  }
+
+  .course-card-content {
+    padding: 20px;
+  }
+
+  .course-card-title {
+    font-size: 1.1rem;
+  }
+
+  .course-card-desc {
+    font-size: 0.8rem;
   }
 }
