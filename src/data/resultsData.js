@@ -3,8 +3,8 @@ import { FaGraduationCap, FaChartLine, FaTrophy, FaMedal } from "react-icons/fa"
 
 export const statsData = [
   { label: "Students Mentored", value: 5000, suffix: "+", icon: FaGraduationCap },
-  { label: "Board Success Rate", value: 99.6, suffix: "%", icon: FaChartLine },
-  { label: "Students Scoring >90%", value: 380, suffix: "+", icon: FaTrophy },
+  { label: "Board Success Rate", value: 98.5, suffix: "%", icon: FaChartLine },
+  { label: "Students Scoring > 75%", value: 380, suffix: "+", icon: FaTrophy },
   { label: "Parent Satisfaction", value: 98, suffix: "%", icon: FaMedal },
 ];
 

@@ -1,6 +1,6 @@
 import { FaGraduationCap, FaTrophy, FaUsers, FaLightbulb } from "react-icons/fa";
 
-export const youtubeVideoId = "xn2TSrZOPWE";
+export const youtubeVideoId = "LHIkhm4KXj8";
 
 export const highlightsData = [
   {

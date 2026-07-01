@@ -11,17 +11,17 @@ const MapMockup = () => {
           <FaMapMarkerAlt />
         </div>
         <div className="map-badge">
-          <strong>Samrat Academy</strong>
-          <span>MG Road Center</span>
+          <strong>Samrat coaching classes</strong>
+          <span>Nandbag main road, Indore</span>
         </div>
       </div>
       <div className="map-details-bar">
         <div className="map-coordinates">
-          <span>LAT: 19.0760° N</span>
-          <span>LON: 72.8777° E</span>
+          <span>LAT: 22.750515° N</span>
+          <span>LON: 75.836075° E</span>
         </div>
         <a 
-          href="https://maps.google.com/?q=Samrat+Coaching+Classes+MG+Road+Mumbai" 
+          href="https://maps.google.com/?q=Samrat+Coaching+Classes+Nandbag+Main+Road+Indore" 
           target="_blank" 
           rel="noopener noreferrer" 
           className="map-directions-btn"

@@ -4,17 +4,17 @@ export const contactDetails = [
   {
     icon: FaPhoneAlt,
     title: "Call Us",
-    lines: ["+91 98765 43210", "+91 87654 32109"],
+    lines: ["+91 8982203267", "+91 9685146125"],
   },
   {
     icon: FaEnvelope,
     title: "Email Us",
-    lines: ["info@samratcoaching.com", "support@samrat.edu"],
+    lines: ["sanjaymaurya435@gmail.com"],
   },
   {
     icon: FaMapMarkerAlt,
     title: "Visit Office",
-    lines: ["123 Education Hub, MG Road", "Near City Center, Mumbai"],
+    lines: ["2 dashrath bag sweta parisar tower ke samne", "near vidya varidhi school, indore, madhya pradesh"],
   },
   {
     icon: FaClock,

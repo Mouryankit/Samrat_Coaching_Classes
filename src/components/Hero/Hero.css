@@ -250,13 +250,13 @@
   display: flex;
   gap: 16px;
   /* Animate right → left */
-  animation: marqueeRTL 22s linear infinite;
+  animation: marqueeRTL 30s linear infinite;
   width: max-content;
 }
 
 .hero-marquee-track-reverse {
   /* Animate left → right */
-  animation: marqueeLTR 28s linear infinite;
+  animation: marqueeLTR 30s linear infinite;
 }
 
 @keyframes marqueeRTL {

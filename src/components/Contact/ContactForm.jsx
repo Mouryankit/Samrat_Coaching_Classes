@@ -16,8 +16,19 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("🚀 Success! Your inquiry has been sent to Samrat Coaching. We will get back to you within 24 hours.");
+
+    const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || "info@samratcoaching.com";
+    const subject = encodeURIComponent(`New Inquiry from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Phone: ${formData.phone}\n` +
+      `Selected Program: ${formData.course}\n\n` +
+      `Inquiry Details:\n${formData.message}`
+    );
+
+    window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+
     setFormData({
       name: "",
       email: "",

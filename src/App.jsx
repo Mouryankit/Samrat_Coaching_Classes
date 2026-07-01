@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import Course from "./components/Course/Course";
 import Features from "./components/Features/Features";
+import Faculty from "./components/Faculty/Faculty";
 import Results from "./components/Results/Results";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
@@ -17,6 +18,7 @@ export default function App() {
         <About />
         <Course />
         <Features />
+        <Faculty />
         <Results />
         <Contact />
       </main>

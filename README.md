@@ -36,12 +36,14 @@ samrat-coaching-classes/
 │   │   ├── Features/       # Strength bento grid
 │   │   ├── Footer/         # Footer with newsletter and quick links
 │   │   ├── Hero/           # Dynamic hero section & counters
+│   │   ├── Faculty/        # Faculty marquee & teacher cards
 │   │   ├── Navbar/         # Collapsible, sticky navigation header
 │   │   └── Results/        # Wall of Fame toppers & results modals
 │   ├── data/               # Centralized data files
 │   │   ├── aboutData.js    # Legacy highlights data
 │   │   ├── contactData.js  # Phone/Email/Address contact details
 │   │   ├── courseData.js   # Class 1-12 tuition programs info
+│   │   ├── facultyData.js  # Teachers profile & qualification details
 │   │   ├── featuresData.js # Strengths grid icons & texts
 │   │   ├── heroData.js     # Hero statistics and highlight banners
 │   │   ├── navigationData.js # Shared navbar & footer links
@@ -84,6 +86,7 @@ The available options are:
 * `VITE_APP_DESCRIPTION`: Description used for SEO metas.
 * `VITE_PORT`: Custom port to run the development server.
 * `VITE_API_URL`: Target backend endpoint.
+* `VITE_CONTACT_EMAIL`: Recipient mailbox for contact form submissions.
 
 ### 4. Run Development Server
 ```bash

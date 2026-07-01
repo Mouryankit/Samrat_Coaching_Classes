@@ -56,7 +56,7 @@ const Results = () => {
       <ResultsStats statsData={statsData} visible={isVisible} />
 
       {/* Conditionally Render: Scrolling Carousel or Static Grid */}
-      {rankersData.length > 4 ? (
+      {/* {rankersData.length > 4 ? (
         <div className="results-marquee-container">
           <div className="results-marquee-track">
             {marqueeData.map((ranker, index) => (
@@ -79,22 +79,22 @@ const Results = () => {
             />
           ))}
         </div>
-      )}
+      )} */}
 
       {/* CTA Section */}
-      <div className="results-cta">
+      {/* <div className="results-cta">
         <button className="btn-enroll" onClick={() => setIsModalOpen(true)}>
           View All {rankersData.length} Toppers
         </button>
-      </div>
+      </div> */}
 
       {/* View All Modal */}
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <ResultsModal 
           onClose={() => setIsModalOpen(false)} 
           rankersData={rankersData} 
         />
-      )}
+      )} */}
     </section>
   );
 };

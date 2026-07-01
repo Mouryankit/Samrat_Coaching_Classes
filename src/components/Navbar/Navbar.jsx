@@ -55,7 +55,7 @@ export default function Navbar() {
           <img src={Logo} alt="SCC Logo" className="logo-img" />
           <div className="navbar-logo-text">
             <span className="navbar-logo-title">Samrat Coaching Classes</span>
-            <span className="navbar-logo-sub">Excellence in Education</span>
+            <span className="navbar-logo-sub">Our passion is your success</span>
           </div>
         </a>
 

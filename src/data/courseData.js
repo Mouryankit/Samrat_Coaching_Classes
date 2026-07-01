@@ -1,12 +1,13 @@
-import CoursePrimaryImg from "../assets/images/course_primary.png";
-import CourseMiddleImg from "../assets/images/course_middle.png";
-import CourseHighImg from "../assets/images/course_high.png";
-import CourseSeniorImg from "../assets/images/course_senior.png";
+import CoursePrimaryImg from "../assets/course-image/primary.jpeg";
+import CourseMiddle1Img from "../assets/course-image/middle1.jpeg";
+import CourseMiddle2Img from "../assets/course-image/middle2.jpeg";
+import CourseHighImg from "../assets/course-image/highSchool.jpeg";
+import CourseSeniorImg from "../assets/course-image/seniorSecondary.jpeg";
 
 export const coursesData = [
   {
     id: 1,
-    category: "Primary (1-5)",
+    category: "Primary (1-4)",
     image: CoursePrimaryImg,
     tag: "Early Start",
     title: "Primary Foundation",
@@ -14,7 +15,7 @@ export const coursesData = [
     duration: "1 Year",
     mode: "Offline",
     seats: "25 Seats",
-    fee: "₹4,000 / yr",
+    fee: "₹3,500 / yr",
     color: "var(--color-primary-light)",
     highlights: [
       "Arithmetic & Reading skills",
@@ -24,15 +25,15 @@ export const coursesData = [
   },
   {
     id: 2,
-    category: "Middle (6-8)",
-    image: CourseMiddleImg,
+    category: "Middle (5-7)",
+    image: CourseMiddle1Img,
     tag: "Booster",
     title: "Middle School Booster",
     subtitle: "Developing critical & analytical thinking",
     duration: "1 Year",
     mode: "Offline",
     seats: "30 Seats",
-    fee: "₹6,000 / yr",
+    fee: "₹4,500 / yr",
     color: "#0288d1",
     highlights: [
       "Conceptual math & science deep dive",
@@ -42,15 +43,15 @@ export const coursesData = [
   },
   {
     id: 3,
-    category: "High (9-10)",
-    image: CourseHighImg,
+    category: "Middle (8-9)",
+    image: CourseMiddle2Img,
     tag: "Popular",
     title: "High School Boards Prep",
     subtitle: "Board exam excellence & core subjects",
     duration: "1 Year",
     mode: "Offline",
     seats: "35 Seats",
-    fee: "₹9,000 / yr",
+    fee: "₹5,000 / yr",
     color: "var(--color-accent-gold)",
     highlights: [
       "Strict NCERT syllabus coverage",
@@ -60,7 +61,25 @@ export const coursesData = [
   },
   {
     id: 4,
-    category: "Senior Secondary (11-12)",
+    category: "High (10-11)",
+    image: CourseHighImg,
+    tag: "Popular",
+    title: "High School Boards Prep",
+    subtitle: "Board exam excellence & core subjects",
+    duration: "1 Year",
+    mode: "Offline",
+    seats: "35 Seats",
+    fee: "₹7,000 / yr",
+    color: "var(--color-accent-gold)",
+    highlights: [
+      "Strict NCERT syllabus coverage",
+      "Regular mock tests & sample papers",
+      "Dedicated doubt clearance sessions",
+    ],
+  },
+  {
+    id: 5,
+    category: "Senior Secondary (12)",
     image: CourseSeniorImg,
     tag: "Top Rated",
     title: "Senior Secondary Mastery",
@@ -68,7 +87,7 @@ export const coursesData = [
     duration: "1-2 Years",
     mode: "Offline",
     seats: "40 Seats",
-    fee: "₹12,000 / yr",
+    fee: "₹8,000 / yr",
     color: "var(--color-accent-orange)",
     highlights: [
       "Science & Commerce streams",

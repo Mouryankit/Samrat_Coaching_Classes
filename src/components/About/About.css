@@ -44,6 +44,8 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 10px 30px rgba(15, 41, 74, 0.04);
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  max-width: 320px;
+  margin: 0 auto;
 }
 
 .about-video-container-wrapper:hover {
@@ -57,7 +59,7 @@
   width: 100%;
   border-radius: 22px;
   overflow: hidden;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 9 / 16;
   background: #0b1528; /* Dark navy base */
   position: relative;
   cursor: pointer;

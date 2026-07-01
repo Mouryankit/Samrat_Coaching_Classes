@@ -2,17 +2,19 @@ export const navLinks = [
   { id: 1, label: "Home", link: "#home" },
   { id: 2, label: "About", link: "#about" },
   { id: 3, label: "Courses", link: "#courses" },
-  { id: 4, label: "Results", link: "#results" },
-  { id: 5, label: "Contact", link: "#contact" },
+  { id: 4, label: "Faculty", link: "#faculty" },
+  { id: 5, label: "Results", link: "#results" },
+  { id: 6, label: "Contact", link: "#contact" },
 ];
 
 export const quickLinks = [
   { id: 1, label: "Home", link: "#home" },
   { id: 2, label: "About Us", link: "#about" },
   { id: 3, label: "Courses Offered", link: "#courses" },
-  { id: 4, label: "Why Choose Us", link: "#features" },
-  { id: 5, label: "Board Results", link: "#results" },
-  { id: 6, label: "Contact Us", link: "#contact" },
+  { id: 4, label: "Meet Faculty", link: "#faculty" },
+  { id: 5, label: "Why Choose Us", link: "#features" },
+  { id: 6, label: "Board Results", link: "#results" },
+  { id: 7, label: "Contact Us", link: "#contact" },
 ];
 
 export const programsLinks = [

@@ -1,0 +1,251 @@
+/* =============================================
+   FACULTY SECTION STYLING — Samrat Coaching Classes
+   ============================================= */
+
+.faculty-section {
+  padding: var(--section-padding);
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background decorative glow */
+.faculty-bg-glow {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.04) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.faculty-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Section Header ── */
+.faculty-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3.5rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.faculty-eyebrow {
+  color: var(--color-primary-light);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* ── Faculty Marquee Showcase (Full Width with mask fades) ── */
+.faculty-marquee-container {
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 20px 0 40px;
+  
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+
+.faculty-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 32px;
+  animation: facultyMarquee 45s linear infinite;
+}
+
+.faculty-marquee-container:hover .faculty-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes facultyMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.33333%);
+  }
+}
+
+/* ── Faculty Card ── */
+.faculty-card {
+  flex-shrink: 0;
+  width: 300px;
+  background: var(--bg-white);
+  border: 1px solid rgba(15, 41, 74, 0.05);
+  border-radius: 24px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(15, 41, 74, 0.03);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.faculty-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(15, 41, 74, 0.08);
+  border-color: rgba(37, 99, 235, 0.15);
+}
+
+/* Image Wrapper */
+.faculty-img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--color-primary-pale);
+}
+
+.faculty-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faculty-card:hover .faculty-img {
+  transform: scale(1.06);
+}
+
+/* Experience Badge */
+.faculty-exp-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(15, 41, 74, 0.85);
+  color: var(--color-accent-gold);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 5px 12px;
+  border-radius: 30px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.badge-icon {
+  font-size: 0.68rem;
+}
+
+/* Card Info */
+.faculty-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.faculty-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.faculty-role {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-primary-light);
+  margin-bottom: 8px;
+}
+
+/* Faculty Details */
+.faculty-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid rgba(15, 41, 74, 0.05);
+  padding-top: 14px;
+}
+
+.detail-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.detail-icon {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.detail-text {
+  font-size: 0.8rem;
+  color: var(--text-body);
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+/* Highlight / Bullet points */
+.highlight-row {
+  background: rgba(37, 99, 235, 0.03);
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(37, 99, 235, 0.05);
+}
+
+.highlight-icon {
+  color: #10b981; /* Emerald green */
+}
+
+/* =============================================
+   RESPONSIVE DESIGN
+   ============================================= */
+
+@media (max-width: 1024px) {
+  .faculty-marquee-container {
+    padding: 15px 0 30px;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  }
+
+  .faculty-marquee-track {
+    gap: 24px;
+  }
+
+  .faculty-card {
+    width: 275px;
+  }
+}
+
+@media (max-width: 600px) {
+  .faculty-marquee-container {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+  }
+
+  .faculty-marquee-track {
+    gap: 16px;
+  }
+
+  .faculty-card {
+    width: 260px;
+  }
+  
+  .faculty-header {
+    margin-bottom: 2.5rem;
+  }
+}

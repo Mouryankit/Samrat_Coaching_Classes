@@ -51,7 +51,7 @@ const Hero = () => {
   /* ── Typewriter ── */
   useEffect(() => {
     const current = SUBJECTS[subjectIdx];
-    const speed   = isDeleting ? 45 : 85;
+    const speed   = isDeleting ? 45 : 75;
     const pause   = 1800;
 
     if (!isDeleting && displayed === current) {
@@ -78,9 +78,9 @@ const Hero = () => {
     <section className="hero" id="home">
 
       {/* ── Background blobs ── */}
-      <div className="hero-blob hero-blob-1" aria-hidden="true" />
+      {/* <div className="hero-blob hero-blob-1" aria-hidden="true" />
       <div className="hero-blob hero-blob-2" aria-hidden="true" />
-      <div className="hero-blob hero-blob-3" aria-hidden="true" />
+      <div className="hero-blob hero-blob-3" aria-hidden="true" /> */}
 
       <div className="hero-container">
 
@@ -90,7 +90,7 @@ const Hero = () => {
           {/* Trust badge */}
           <div className="hero-badge">
             <span className="hero-badge-dot" />
-            Trusted by 5000+ Students Across the Region
+            Trusted by 5000+ Students
           </div>
 
           {/* Heading */}
@@ -115,6 +115,12 @@ const Hero = () => {
 
           {/* Pills */}
           <div className="hero-pills">
+            <span className="hero-pill">✅ Commerce</span>
+            <span className="hero-pill">✅ PCM</span>
+            <span className="hero-pill">✅ PCB</span>
+            <span className="hero-pill">✅ Arts</span>
+            <span className="hero-pill">✅ Public Speaking</span>
+            <span className="hero-pill">✅ Spoken English</span>
             <span className="hero-pill">✅ Small Batches</span>
             <span className="hero-pill">✅ Doubt Sessions</span>
             <span className="hero-pill">✅ Test Series</span>
