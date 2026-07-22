@@ -1,4 +1,4 @@
-import personImg from "../assets/images/person.PNG";
+import shivaniLodhiImg from "../assets/faculty-image/shivaniLodhi.PNG";
 import vikasMauryaImg from "../assets/faculty-image/vikasMaurya.jpeg";
 import sanjayMauryaImg from "../assets/faculty-image/sanjayMaurya.jpeg";
 import suchitMauryaImg from "../assets/faculty-image/suchitMaurya.jpeg";
@@ -37,6 +37,6 @@ export const facultyData = [
     qualification: "MBA",
     experience: "4+ Years",
     highlight: "Board expert focused on answer writing skills and soft skills mentoring.",
-    img: personImg,
+    img: shivaniLodhiImg,
   },
 ];
